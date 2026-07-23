@@ -1,0 +1,746 @@
+
+
+
+body {
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    
+}
+.container {
+   flex: 1;;
+}
+.add-btn,.edit-btn{
+    background-color: #fe424d!important;
+    border: none!important;
+}
+.show-img{
+    height: 20rem;
+    object-fit: cover;
+}
+.btns{
+    display: flex;
+    gap: 1rem;
+}
+
+
+
+
+
+
+
+
+
+.navbar{
+    height:5rem;
+    background-color: white;
+}
+.fa-solid.fa-house-circle-check{
+    color: #fe424d;
+    font-size: 2rem;
+}
+.nav-link {
+    color: #222222 !important;
+}
+/* Footer */
+.f-info-links a {
+    text-decoration: none;
+    color: #222222;
+    
+}
+
+.f-info-links a:hover {
+    text-decoration: underline;
+}
+.f-info-socials i {
+   font-size: 1.2rem;
+   margin-right: 1rem;
+}
+.f-info-links ,.f-info-socials ,.f-info-brand {
+    width: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.f-info {
+    text-align: center;
+    height: 8rem;
+    background-color: #ebebeb;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.card {
+    border: none !important;
+    margin-bottom: 2rem;
+}
+
+.card-img-top {
+    border-radius: 1rem !important;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+
+.card-body {
+    padding: 0 !important;
+}
+
+.card-text p {
+    font-weight: 400;
+}
+
+
+/* ============================================================
+   GEN-Z / DARK MODE THEME — DriveGo
+   Toggle by adding class="dark-mode" to <body> (e.g. via JS +
+   localStorage). Nothing above this line is modified.
+   ============================================================ */
+
+:root {
+    --dg-bg: #0b0d10;
+    --dg-surface: #14171c;
+    --dg-surface-2: #1c2027;
+    --dg-border: #262b33;
+    --dg-text: #f2f3f5;
+    --dg-text-muted: #9aa1ab;
+    --dg-accent: #c6ff3a;        /* neon lime — the "electric" accent */
+    --dg-accent-2: #7a5cff;      /* electric violet, used in gradients */
+    --dg-accent-contrast: #0b0d10;
+    --dg-glow: 0 0 24px rgba(198, 255, 58, 0.35);
+    --dg-radius: 1.1rem;
+}
+
+body.dark-mode {
+    background-color: var(--dg-bg);
+    color: var(--dg-text);
+}
+
+/* Navbar */
+body.dark-mode .navbar {
+    background-color: var(--dg-surface) !important;
+    border-bottom: 1px solid var(--dg-border);
+}
+
+body.dark-mode .nav-link {
+    color: var(--dg-text) !important;
+    transition: color 0.2s ease;
+}
+
+body.dark-mode .nav-link:hover {
+    color: var(--dg-accent) !important;
+}
+
+body.dark-mode .fa-solid.fa-house-circle-check {
+    color: var(--dg-accent);
+    filter: drop-shadow(0 0 8px rgba(198, 255, 58, 0.6));
+}
+
+/* Buttons — gradient, glowing, unmistakably Gen-Z */
+body.dark-mode .add-btn,
+body.dark-mode .edit-btn {
+    background: linear-gradient(135deg, var(--dg-accent), var(--dg-accent-2)) !important;
+    color: var(--dg-accent-contrast) !important;
+    font-weight: 700;
+    border: none !important;
+    box-shadow: var(--dg-glow);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+body.dark-mode .add-btn:hover,
+body.dark-mode .edit-btn:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 0 32px rgba(198, 255, 58, 0.5);
+}
+
+body.dark-mode .btn-danger {
+    background: #2a1620 !important;
+    color: #ff6b81 !important;
+    border: 1px solid #ff6b81 !important;
+    font-weight: 600;
+}
+
+/* Cards — glassy, floating, rounded */
+body.dark-mode .card {
+    background-color: var(--dg-surface);
+    border: 1px solid var(--dg-border) !important;
+    border-radius: var(--dg-radius);
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+body.dark-mode .card:hover {
+    transform: translateY(-4px);
+    border-color: var(--dg-accent) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(198, 255, 58, 0.15);
+}
+
+body.dark-mode .card-img-top,
+body.dark-mode .show-img {
+    border-radius: var(--dg-radius) var(--dg-radius) 0 0 !important;
+    filter: saturate(1.08) contrast(1.03);
+}
+
+body.dark-mode .card-body {
+    padding: 1rem !important;
+    background-color: var(--dg-surface);
+}
+
+body.dark-mode .card-text p,
+body.dark-mode .card-title {
+    color: var(--dg-text);
+}
+
+body.dark-mode .card-text small,
+body.dark-mode .text-muted {
+    color: var(--dg-text-muted) !important;
+}
+
+/* Price / rate badges — the neon highlight moment */
+body.dark-mode .listing-price {
+    color: var(--dg-accent);
+    font-weight: 700;
+}
+
+/* Forms (New Listing / Edit Listing) */
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+    background-color: var(--dg-surface-2) !important;
+    color: var(--dg-text) !important;
+    border: 1px solid var(--dg-border) !important;
+    border-radius: 0.6rem !important;
+}
+
+body.dark-mode input:focus,
+body.dark-mode textarea:focus,
+body.dark-mode select:focus {
+    border-color: var(--dg-accent) !important;
+    box-shadow: 0 0 0 3px rgba(198, 255, 58, 0.2) !important;
+    outline: none;
+}
+
+body.dark-mode label {
+    color: var(--dg-text-muted);
+    font-weight: 600;
+}
+
+/* Footer */
+body.dark-mode .f-info {
+    background-color: var(--dg-surface) !important;
+}
+
+body.dark-mode .f-info-links a {
+    color: var(--dg-text) !important;
+}
+
+body.dark-mode .f-info-links a:hover {
+    color: var(--dg-accent) !important;
+}
+
+body.dark-mode .f-info-socials i {
+    color: var(--dg-text-muted);
+    transition: color 0.2s ease;
+}
+
+body.dark-mode .f-info-socials i:hover {
+    color: var(--dg-accent);
+}
+
+/* Dark mode toggle switch */
+.theme-toggle-btn {
+    background: transparent;
+    border: 1px solid var(--dg-border, #d0d0d0);
+    color: inherit;
+    border-radius: 999px;
+    width: 2.6rem;
+    height: 2.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 1.1rem;
+}
+
+body.dark-mode .theme-toggle-btn {
+    border-color: var(--dg-accent);
+    color: var(--dg-accent);
+    box-shadow: 0 0 12px rgba(198, 255, 58, 0.25);
+}
+
+.theme-toggle-btn:hover {
+    transform: rotate(15deg) scale(1.05);
+}
+
+/* Scrollbar flourish, because Gen-Z notices this stuff */
+body.dark-mode ::-webkit-scrollbar {
+    width: 10px;
+}
+body.dark-mode ::-webkit-scrollbar-track {
+    background: var(--dg-bg);
+}
+body.dark-mode ::-webkit-scrollbar-thumb {
+    background: var(--dg-surface-2);
+    border-radius: 999px;
+}
+body.dark-mode ::-webkit-scrollbar-thumb:hover {
+    background: var(--dg-accent-2);
+}
+
+body.dark-mode .navbar-brand,
+body.dark-mode .nav-link {
+    color: var(--dg-accent) !important;
+    text-shadow: 0 0 10px rgba(198, 255, 58, 0.4);
+}
+
+body.dark-mode .nav-link:hover {
+    color: var(--dg-accent-2) !important;
+}
+body.dark-mode .card-title,
+body.dark-mode .card-text,
+body.dark-mode .card-text p {
+    color: var(--dg-text) !important;
+}
+
+body.dark-mode .card-text small,
+body.dark-mode .text-muted {
+    color: var(--dg-text-muted) !important;
+}
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder,
+body.dark-mode select::placeholder {
+    color: var(--dg-text-muted) !important;
+    opacity: 1 !important;
+}
+.Invalid-feedback {
+    color: #dc3545 !important;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+/* === Review form theme variables === */
+:root {
+  --review-bg: #ffffff;
+  --review-surface: #f7f7f8;
+  --review-border: rgba(0, 0, 0, 0.12);
+  --review-text: #1a1a1a;
+  --review-text-muted: #6b6b6b;
+  --review-accent: #63b34a;       /* green accent, light theme */
+  --review-accent-fg: #12140f;
+  --review-track: rgba(0, 0, 0, 0.12);
+}
+
+[data-bs-theme="dark"] {
+  --review-bg: #1a1c22;
+  --review-surface: #1a1c22;
+  --review-border: rgba(255, 255, 255, 0.1);
+  --review-text: #f2f2f2;
+  --review-text-muted: #9a9a9a;
+  --review-accent: #c6ff5c;       /* lime accent, dark theme */
+  --review-accent-fg: #12140f;
+  --review-track: rgba(255, 255, 255, 0.15);
+}
+
+/* === Review form === */
+/* Force full opacity on the whole review block (this was the real bug) */
+.review-form-wrap,
+.review-form-wrap * {
+  opacity: 1 !important;
+}
+
+/* Leave a Review heading — theme-independent accent color */
+.review-form-wrap h4 {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.5rem;
+  color: #b8720a; /* default: readable on light backgrounds */
+  opacity: 1 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .review-form-wrap h4 {
+    color: #f0b84e; /* lighter gold, readable on dark backgrounds */
+  }
+}
+
+.review-form-wrap,
+.review-form-wrap * {
+  opacity: 1 !important;
+}
+
+.review-form-wrap hr {
+  border-color: var(--review-border);
+  margin-bottom: 1.75rem;
+}
+
+/* --- Rating group --- */
+.rating-group {
+  margin-bottom: 1.75rem;
+}
+
+.rating-group .form-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--review-text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+}
+
+.rating-value {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2rem;
+  height: 2rem;
+  padding: 0 0.5rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--review-accent) 15%, transparent);
+  color: var(--review-accent);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+input[type="range"]#rating {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    var(--review-accent) 0%,
+    var(--review-accent) var(--fill, 50%),
+    var(--review-track) var(--fill, 50%),
+    var(--review-track) 100%
+  );
+  outline: none;
+  cursor: pointer;
+}
+
+input[type="range"]#rating::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--review-accent) 25%, transparent),
+              0 1px 3px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: box-shadow 0.15s ease;
+}
+
+input[type="range"]#rating:active::-webkit-slider-thumb {
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--review-accent) 35%, transparent);
+}
+
+input[type="range"]#rating::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: none;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--review-accent) 25%, transparent);
+  cursor: pointer;
+}
+
+/* --- Comments --- */
+.comment-group .form-label {
+  display: block;
+  color: var(--review-text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 0.6rem;
+}
+
+textarea#comment.form-control {
+  background: var(--review-surface);
+  border: 1px solid var(--review-border);
+  border-radius: 0;              /* was 10px — now fully rectangular */
+  color: var(--review-text);
+  padding: 0.9rem 1rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  resize: vertical;
+  min-height: 140px;
+  width: 100%;                    /* ensures it spans the full card width */
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+textarea#comment.form-control::placeholder {
+  color: var(--review-text-muted);
+}
+
+textarea#comment.form-control:focus {
+  background: var(--review-surface);
+  border-color: var(--review-accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--review-accent) 15%, transparent);
+  outline: none;
+  color: var(--review-text);
+}
+
+/* --- Submit button --- */
+.review-submit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1.75rem;
+  margin-top: 1.5rem;
+  border: none;
+  border-radius: 8px;
+  background: var(--review-accent);
+  color: var(--review-accent-fg);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.review-submit-btn:hover {
+  filter: brightness(1.08);
+}
+
+.review-submit-btn:active {
+  transform: scale(0.98);
+}
+
+
+#map{
+    height: 400px;
+    width: 80vh;
+}
+
+.filters {
+  display: flex;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.filter-icons {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  overflow-x: auto;
+  gap: 1rem;
+}
+
+.filter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  color: #6a6a6a;
+  opacity: 0.7;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 0.75rem;
+  min-width: fit-content;
+  transition: all 0.2s ease;
+}
+
+.filter i {
+  font-size: 1.4rem;
+}
+
+.filter p {
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.filter:hover {
+  opacity: 1;
+  color: #222;
+  border-bottom-color: #222;
+}
+
+.filter.active {
+  opacity: 1;
+  color: #222;
+  border-bottom-color: #222;
+}
+
+.tax-toggle {
+  margin-left: 2rem;
+  flex-shrink: 0;
+}
+
+.tax-toggle .form-check {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.tax-toggle .form-check-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #222;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.tax-toggle .form-check-input {
+  width: 2.5rem;
+  height: 1.4rem;
+  cursor: pointer;
+  background-color: #ddd;
+  border: none;
+  box-shadow: none;
+  background-image: none;
+  border-radius: 999px;
+  position: relative;
+  appearance: none;
+  transition: background-color 0.2s ease;
+}
+
+.tax-toggle .form-check-input::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 50%;
+  background-color: #fff;
+  transition: transform 0.2s ease;
+}
+
+.tax-toggle .form-check-input:checked {
+  background-color: #222;
+}
+
+.tax-toggle .form-check-input:checked::before {
+  transform: translateX(1.1rem);
+}
+
+.tax-toggle .form-check-input:focus {
+  box-shadow: none;
+  outline: none;
+}
+.filters {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.5rem 1rem 0; /* right padding stops the toggle text clipping */
+  border-bottom: 1px solid #e0e0e0;
+  box-sizing: border-box;
+}
+
+.filter-icons {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  overflow-x: auto;
+  gap: 1rem;
+  min-width: 0; /* lets it shrink properly instead of forcing overflow */
+}
+
+.tax-toggle {
+  margin-left: 2rem;
+  flex-shrink: 0;
+}
+
+/* --- Dark mode overrides --- */
+body.dark-mode .filters {
+  border-bottom-color: #333;
+}
+
+body.dark-mode .filter {
+  color: #999;
+}
+
+body.dark-mode .filter:hover {
+  color: #d3ff33; /* matches your lime accent in the screenshot */
+  border-bottom-color: #d3ff33;
+}
+
+body.dark-mode .filter.active {
+  color: #d3ff33;
+  border-bottom-color: #d3ff33;
+}
+
+body.dark-mode .tax-toggle .form-check-label {
+  color: #eee;
+}
+
+body.dark-mode .tax-toggle .form-check-input {
+  background-color: #444;
+}
+
+body.dark-mode .tax-toggle .form-check-input:checked {
+  background-color: #d3ff33;
+}
+
+body.dark-mode .tax-toggle .form-check-input:checked::before {
+  background-color: #111; /* dark knob shows up better against lime */
+}
+body.dark-mode .tax-toggle .form-check-input:checked {
+  background-color: #d3ff33;
+  box-shadow: 0 0 10px rgba(211, 255, 51, 0.7);
+}
+
+body.dark-mode .tax-toggle .form-check-input:checked::before {
+  background-color: #111;
+}
+.tax-toggle {
+  margin-left: 2rem;
+  flex-shrink: 0;
+  border: 1px solid #ccc;
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+}
+
+.tax-toggle .form-check {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0; /* Bootstrap adds margin-bottom by default, kills vertical centering in the pill */
+}
+body.dark-mode .tax-toggle {
+  border-color: #444;
+}
+.search-bar {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 999px;
+  padding: 0.25rem 0.25rem 0.25rem 1rem;
+  flex: 0 1 320px;
+}
+
+.search-input {
+  border: none;
+  outline: none;
+  background: transparent;
+  flex: 1;
+  font-size: 0.9rem;
+}
+
+.search-btn {
+  background-color: #d3382e; /* swap for your brand color if different from Airbnb's red */
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 2.2rem;
+  height: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+body.dark-mode .search-bar {
+  border-color: #444;
+  background-color: #1a1a1a;
+}
+
+body.dark-mode .search-input {
+  color: #eee;
+}
+
+body.dark-mode .search-input::placeholder {
+  color: #888;
+}

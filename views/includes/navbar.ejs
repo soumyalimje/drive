@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top ">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/listings "><i class="fa-solid fa-car-side"></i> DriveGo</a>
+
+    <form class="d-none d-md-flex search-bar" action="/listings" method="GET" role="search">
+      <input
+        class="search-input"
+        type="text"
+        name="search"
+        placeholder="Find a vehicle..."
+        value="<%= typeof search !== 'undefined' ? search : '' %>"
+      >
+      <button class="search-btn" type="submit">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </form>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link" href="/listings">Explore</a>
+      </div>
+
+      <form class="d-flex d-md-none search-bar mt-2 mb-2" action="/listings" method="GET" role="search">
+        <input
+          class="search-input"
+          type="text"
+          name="search"
+
+          placeholder="Find a vehicle..."
+          value="<%= typeof search !== 'undefined' ? search : '' %>"
+        >
+        <button class="search-btn" type="submit">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </form>
+
+      <div class="navbar-nav ms-auto">
+        <a class="nav-link" href="/listings/new">New Ride</a>
+        <%if(!currentUser){%>
+          <a class="nav-link" href="/register"><b>Sign Up</b></a>
+          <a class="nav-link" href="/login"><b>Login</b></a>
+        <% } else { %>
+          <a class="nav-link" href="/logout"><b>Logout</b></a>
+        <% } %>
+      </div>
+    </div>
+    <button id="theme-toggle" class="theme-toggle-btn" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+  </div>
+</nav>
