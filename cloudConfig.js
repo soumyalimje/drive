@@ -1,4 +1,5 @@
 const cloudinary = require('cloudinary').v2;
+const cloudinaryModule = require('cloudinary'); // raw module, has .v2 nested
 const cloudinaryStorage = require('multer-storage-cloudinary');
 
 cloudinary.config({
@@ -8,7 +9,7 @@ cloudinary.config({
 });
 
 const storage = cloudinaryStorage({
-  cloudinary: cloudinary,
+  cloudinary: cloudinaryModule,   // pass raw module here, not cloudinary.v2
   folder: 'drivego_DEV',
   allowedFormats: ['jpg', 'png', 'jpeg'],
 });
