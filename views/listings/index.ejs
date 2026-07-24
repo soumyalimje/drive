@@ -2,92 +2,106 @@
 <%= success %> 
     <h3>All Listings</h3> -->
 <div class="filters">
-  <div class="filter-icons">
-    <div class="filter" data-filter="sedan">
-      <i class="fa-solid fa-car"></i>
-      <p>Sedan</p>
-    </div>
-    <div class="filter" data-filter="suv">
-      <i class="fa-solid fa-truck-monster"></i>
-      <p>SUV</p>
-    </div>
-    <div class="filter" data-filter="hatchback">
-      <i class="fa-solid fa-car-side"></i>
-      <p>Hatchback</p>
-    </div>
-    <div class="filter" data-filter="luxury">
-      <i class="fa-solid fa-gem"></i>
-      <p>Luxury</p>
-    </div>
-    <div class="filter" data-filter="electric">
-      <i class="fa-solid fa-charging-station"></i>
-      <p>Electric</p>
-    </div>
-    <div class="filter" data-filter="convertible">
-      <i class="fa-solid fa-sun"></i>
-      <p>Convertible</p>
-    </div>
-    <div class="filter" data-filter="automatic">
-      <i class="fa-solid fa-gears"></i>
-      <p>Automatic</p>
-    </div>
-    <div class="filter" data-filter="offroad">
-      <i class="fa-solid fa-road-circle-exclamation"></i>
-      <p>Off-road</p>
-    </div>
-    <div class="filter" data-filter="budget">
-      <i class="fa-solid fa-tag"></i>
-      <p>Budget</p>
-    </div>
-  </div>
+<div class="filter-icons">
+<div class="filter" data-filter="sedan">
+<i class="fa-solid fa-car"></i>
+<p>Sedan</p>
+</div>
+<div class="filter" data-filter="suv">
+<i class="fa-solid fa-truck-monster"></i>
+<p>SUV</p>
+</div>
+<div class="filter" data-filter="hatchback">
+<i class="fa-solid fa-car-side"></i>
+<p>Hatchback</p>
+</div>
+<div class="filter" data-filter="luxury">
+<i class="fa-solid fa-gem"></i>
+<p>Luxury</p>
+</div>
+<div class="filter" data-filter="electric">
+<i class="fa-solid fa-charging-station"></i>
+<p>Electric</p>
+</div>
+<div class="filter" data-filter="convertible">
+<i class="fa-solid fa-sun"></i>
+<p>Convertible</p>
+</div>
+<div class="filter" data-filter="automatic">
+<i class="fa-solid fa-gears"></i>
+<p>Automatic</p>
+</div>
+<div class="filter" data-filter="offroad">
+<i class="fa-solid fa-road-circle-exclamation"></i>
+<p>Off-road</p>
+</div>
+<div class="filter" data-filter="budget">
+<i class="fa-solid fa-tag"></i>
+<p>Budget</p>
+</div>
+</div>
 
- <div class="tax-toggle">
-  <div class="form-check form-switch">
-    <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
-    <label class="form-check-label" for="switchCheckDefault">Display total after taxes</label>
-  </div>
+<div class="tax-toggle">
+<div class="form-check form-switch">
+<input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
+<label class="form-check-label" for="switchCheckDefault">Display total after taxes</label>
+</div>
 </div>
 </div>
 <br>
 <br>
 
 <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
-  <% for(let listing of allListings) { %>
-    <a href="/listings/<%= listing._id %>" class="text-decoration-none text-dark">
-      <div class="card col" data-price="<%= listing.price %>">
-        <img src="<%= listing.image.url %>" loading="lazy" class="card-img-top" alt="listing image">
-        <div class="card-body">
-          <p class="card-text">
-            <b><%= listing.title %></b> <br />
-            <span class="price-display">&#8377; <%= listing.price.toLocaleString("en-IN") %> / night</span>
-          </p>
-        </div>
-      </div>
-    </a>
-  <% } %>
+<% for(let listing of allListings) { %>
+<a href="/listings/<%= listing._id %>" class="text-decoration-none text-dark">
+<div class="card col" data-price="<%= listing.price %>" data-categories="<%= listing.categories.join(',') %>">
+<img src="<%= listing.image.url %>" loading="lazy" class="card-img-top" alt="listing image">
+<div class="card-body">
+<p class="card-text">
+<b><%= listing.title %></b> <br />
+<span class="price-display">&#8377; <%= listing.price.toLocaleString("en-IN") %> / night</span>
+</p>
+</div>
+</div>
+</a>
+<% } %>
 </div>
 
 <script>
-  document.querySelectorAll('.filter').forEach(filterEl => {
-    filterEl.addEventListener('click', () => {
-      document.querySelectorAll('.filter').forEach(f => f.classList.remove('active'));
-      filterEl.classList.add('active');
-      // TODO: trigger actual filtering logic here, e.g. filter by data-filter value
+document.querySelectorAll('.filter').forEach(filterEl => {
+filterEl.addEventListener('click', () => {
+const isAlreadyActive = filterEl.classList.contains('active');
+document.querySelectorAll('.filter').forEach(f => f.classList.remove('active'));
+
+const cards = document.querySelectorAll('.card');
+
+if (isAlreadyActive) {
+cards.forEach(card => card.closest('a').style.display = '');
+return;
+    }
+
+filterEl.classList.add('active');
+const selected = filterEl.dataset.filter;
+
+cards.forEach(card => {
+const cats = card.dataset.categories.split(',');
+card.closest('a').style.display = cats.includes(selected) ? '' : 'none';
     });
   });
+});
 </script>
 
 <script>
-  let taxToggle = document.getElementById('switchCheckDefault');
-  taxToggle.addEventListener('change', function () {
-    document.querySelectorAll('.card').forEach(card => {
-      const basePrice = parseFloat(card.dataset.price);
-      const display = card.querySelector('.price-display');
-      if (taxToggle.checked) {
-        const totalPrice = basePrice * 1.18; // Assuming 18% tax
-        display.innerHTML = `&#8377; ${totalPrice.toLocaleString("en-IN")} / night (after taxes)`;
+let taxToggle = document.getElementById('switchCheckDefault');
+taxToggle.addEventListener('change', function () {
+document.querySelectorAll('.card').forEach(card => {
+const basePrice = parseFloat(card.dataset.price);
+const display = card.querySelector('.price-display');
+if (taxToggle.checked) {
+const totalPrice = basePrice * 1.18; // Assuming 18% tax
+display.innerHTML = `&#8377; ${totalPrice.toLocaleString("en-IN")} / night (after taxes)`;
       } else {
-        display.innerHTML = `&#8377; ${basePrice.toLocaleString("en-IN")} / night`;
+display.innerHTML = `&#8377; ${basePrice.toLocaleString("en-IN")} / night`;
       }
     });
   });
