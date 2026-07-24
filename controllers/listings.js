@@ -17,19 +17,13 @@ module.exports.showListing=async (req, res) => {
   }
   return res.render("listings/show.ejs", { listing });
 }
-module.exports.createListing=async (req, res) => {
-
-  // console.log("req.file:", req.file);
-  // console.log("req.body:", req.body);
-  
-  let url = req.file.path;
-  let filename = req.file.filename;
-  //req.body.listing.image = { url, filename };
+module.exports.createListing = async (req, res) => {
+  let url = req.file.secure_url;
+  let filename = req.file.public_id;
   const newListing = new Listing(req.body.listing);
   newListing.owner = req.user._id;
   newListing.image = { url, filename };
-await newListing.save();
-console.log("Saved image object:", newListing.image);
+  await newListing.save();
   req.flash("success", "Successfully made a new listing!");
   return res.redirect("/listings");
 }
@@ -44,15 +38,15 @@ module.exports.renderEditForm = async (req, res) => {
   originalImage = originalImage.replace("/upload", "/upload/w_250,c_fill");
   return res.render("listings/edit.ejs", { listing, originalImage });
 };
-module.exports.updateListing=async (req, res) => {
+module.exports.updateListing = async (req, res) => {
   let { id } = req.params;
- let listing=  await Listing.findByIdAndUpdate(id, { ...req.body.listing });
- if(typeof req.file !== "undefined") {
-  let url = req.file.path;
-  let filename = req.file.filename;
-  listing.image = { url, filename };
-  await listing.save();
- }
+  let listing = await Listing.findByIdAndUpdate(id, { ...req.body.listing });
+  if (typeof req.file !== "undefined") {
+    let url = req.file.secure_url;
+    let filename = req.file.public_id;
+    listing.image = { url, filename };
+    await listing.save();
+  }
   req.flash("success", "Listing updated successfully!");
   return res.redirect(`/listings/${id}`);
 }
