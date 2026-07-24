@@ -19,6 +19,7 @@ router.route("/")
     validateListing,
     wrapAsync(listingsController.createListing)
   );
+  
 
 
 //New Route
