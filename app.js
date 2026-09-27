@@ -87,15 +87,6 @@ app.get("/", (req, res) => {
   res.redirect("/listings");
 });
 
-app.get("/fakeUser", async (req, res) => {
-let user = new User({ 
-email: "fakeuser@example.com" ,
-username: "fakeuser",
-  });
-let newUser = await User.register(user, "password");
-res.send(newUser);
-  });
-
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewsRouter);
 app.use("/", userRouter);

@@ -11,7 +11,7 @@
       <div class="card-body px-0">
         <p class="card-text">
           <br>
-          Owner: <i><%= listing.owner.username %></i>
+          Owner: <i><%= (listing.owner && listing.owner.username) || "Unknown" %></i>
           <br><br>
           <span class="text-muted d-block mb-2"><%= listing.description %></span>
           <span class="fw-semibold d-block">&#8377; <%= listing.price.toLocaleString("en-IN") %></span>
@@ -21,7 +21,7 @@
       </div>
     </div>
 
-    <% if (currentUser && currentUser._id.equals(listing.owner._id)) { %>
+    <% if (currentUser && listing.owner && currentUser._id.equals(listing.owner._id)) { %>
       <div class="btns d-flex justify-content-center gap-3 mt-3">
         <a href="/listings/<%= listing._id %>/edit" class="btn btn-danger px-4 edit-btn">Edit</a>
 
@@ -88,7 +88,7 @@
           <% for (let review of listing.reviews) { %>
             <div class="card col-5 ms-3 mb-3 border-dark shadow-sm" style="width: 18rem;">
               <div class="card-body">
-                <h5 class="card-title">@<%= review.author.username %></h5>
+                <h5 class="card-title">@<%= (review.author && review.author.username) || "Unknown" %></h5>
                 <p class="starability-result" data-rating="<%= review.rating %>">
                   Rated: <%= review.rating %> stars
                 </p>
